@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.print.attribute.standard.Media;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -25,9 +26,11 @@ public class MainController {
     }
 
     @RequestMapping(value="/cars", method=RequestMethod.GET)
-    public String getCars(){
-        carService.getAllCars();
-        return "index";
+    public ModelAndView getCars(){
+        List<Car> list = carService.getAllCars();
+        ModelAndView modelAndView = new ModelAndView("cars");
+        modelAndView.addObject("list", list);
+        return modelAndView;
     }
 
     @RequestMapping(value="/add", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
