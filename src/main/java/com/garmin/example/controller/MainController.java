@@ -34,9 +34,9 @@ public class MainController {
     }
 
     @RequestMapping(value="/add", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String addCar(@RequestBody Car car){
+    public ModelAndView addCar(@RequestBody Car car){
         carService.addCar(car);
-        return "index";
+        return new ModelAndView("forward:/cars");
     }
 
     @RequestMapping(value="/update", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
