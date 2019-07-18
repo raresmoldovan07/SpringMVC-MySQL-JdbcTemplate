@@ -1,0 +1,10 @@
+.main-page{
+    display:flex;
+    justify-content:space-around;
+}
+.form{
+    width: 40%;
+}
+.table-div{
+    width: 50%;
+}
