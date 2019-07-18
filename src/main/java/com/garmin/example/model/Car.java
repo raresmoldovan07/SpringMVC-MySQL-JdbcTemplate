@@ -18,8 +18,8 @@ public class Car {
 
     }
 
-    public String toString(){
-        return id + " " + brand + " " + model + " " + year;
+    public Car(int id) {
+        this.id = id;
     }
 
     public int getYear() {
