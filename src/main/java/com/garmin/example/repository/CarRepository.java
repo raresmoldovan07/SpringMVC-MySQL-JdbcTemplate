@@ -6,12 +6,15 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class CarRepository {
+public interface CarRepository {
 
-    private List<Car> carList = new ArrayList<Car>();
+    List<Car> getAllCars();
 
-    public List<Car> getAll(){
-        return carList;
-    }
+    void addCar(Car car);
+
+    void updateCar(Car car);
+
+    void deleteCar(int id);
+
+    Car findCarById(int id);
 }
