@@ -10,7 +10,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class CarRepositoryImpl implements CarRepository {
@@ -20,6 +22,17 @@ public class CarRepositoryImpl implements CarRepository {
     @Autowired
     public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) throws DataAccessException{
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+    }
+
+    private Map<String, Object> getSqlParameterByMap(Car car){
+        Map<String, Object> parameterMap = new HashMap<>();
+        if(car != null){
+            parameterMap.put("id", car.getId());
+            parameterMap.put("brand", car.getBrand());
+            parameterMap.put("model", car.getModel());
+            parameterMap.put("year", car.getYear());
+        }
+        return parameterMap;
     }
 
     private SqlParameterSource getSqlParameterByModel(Car car){
@@ -41,7 +54,7 @@ public class CarRepositoryImpl implements CarRepository {
 
     public void addCar(Car car) {
         String sql = "INSERT INTO cars(car_brand, car_model, car_year) VALUES (:brand, :model, :year)";
-        namedParameterJdbcTemplate.update(sql, getSqlParameterByModel(car));
+        namedParameterJdbcTemplate.update(sql, getSqlParameterByMap(car));
     }
 
     public void updateCar(Car car) {
@@ -51,7 +64,7 @@ public class CarRepositoryImpl implements CarRepository {
 
     public void deleteCar(int id) {
         String sql = "DELETE FROM cars WHERE car_id=:id";
-        namedParameterJdbcTemplate.update(sql, getSqlParameterByModel(new Car(id)));
+        namedParameterJdbcTemplate.update(sql, getSqlParameterByMap(new Car(id)));
     }
 
     public Car findCarById(int id) {

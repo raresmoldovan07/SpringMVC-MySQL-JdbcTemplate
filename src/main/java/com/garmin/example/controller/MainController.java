@@ -3,8 +3,11 @@ package com.garmin.example.controller;
 import com.garmin.example.model.Car;
 import com.garmin.example.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.print.attribute.standard.Media;
 
 @Controller
 public class MainController {
@@ -27,24 +30,14 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value="/add", method=RequestMethod.POST)
-    public String addCar(@RequestParam("brand") String brand, @RequestParam("model") String model,
-                         @RequestParam("year")int year){
-        Car car = new Car();
-        car.setBrand(brand);
-        car.setModel(model);
-        car.setYear(year);
-
+    @RequestMapping(value="/add", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String addCar(@RequestBody Car car){
         carService.addCar(car);
         return "index";
     }
 
-    @RequestMapping(value="/update", method=RequestMethod.POST)
-    public String updateCar(@RequestParam("id") int id, @RequestParam("brand") String brand,
-                            @RequestParam("model") String model, @RequestParam("year")int year){
-
-        Car car = new Car(id, brand, model, year);
-
+    @RequestMapping(value="/update", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String updateCar(@RequestBody Car car){
         carService.updateCar(car);
         return "index";
     }
