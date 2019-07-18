@@ -7,9 +7,9 @@ function submitForm() {
     fetch(url, {
         method: "POST",
         body: JSON.stringify(newCar),
-        headers: [{
+        headers: {
             'Content-Type': 'application/json'
-        }]
+        }
     }).then(response => {
         console.log(response);
     });
