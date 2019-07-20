@@ -16,9 +16,15 @@
     <script src="../js/form.js"></script>
 </head>
 <body>
+<br><br>
 <div class="main-page">
+
     <div class="form">
         <form>
+            <div class="form-group">
+                <label for="car_id">Id</label>
+                <input type="text" class="form-control" id="car_id" placeholder="ID" readonly>
+            </div>
             <div class="form-group">
                 <label for="brand">Brand</label>
                 <input type="text" class="form-control" id="brand" placeholder="Enter brand">
@@ -29,13 +35,18 @@
             </div>
             <div class="form-group">
                 <label for="year">Year</label>
-                <input type="number" class="form-control" id="year" placeholder="Enter Year">
+                <input type="number" min="1950" class="form-control" id="year" placeholder="Enter Year">
             </div>
-            <button onclick="submitForm()" type="button" class="btn btn-primary">Submit</button>
+            <div>
+                <button onclick="addButton()" type="button" class="btn btn-primary">Add car</button>
+                <button onclick="updateButton()" type="button" class="btn btn-primary">Update car</button>
+                <button onclick="deleteButton()" type="button" class="btn btn-primary">Delete car</button>
+            </div>
         </form>
     </div>
+
     <div class="table-div">
-        <table class="table table-dark">
+        <table class="table table-dark" id="table">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -46,7 +57,7 @@
             </thead>
             <tbody>
             <c:forEach var="car" items="${list}">
-                <tr>
+                <tr onclick="displayRow()">
                     <th>${car.id}</th>
                     <td>${car.brand}</td>
                     <td>${car.model}</td>
@@ -56,6 +67,7 @@
             </tbody>
         </table>
     </div>
+
 </div>
 </body>
 </html>
