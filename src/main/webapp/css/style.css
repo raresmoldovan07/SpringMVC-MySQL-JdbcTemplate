@@ -3,8 +3,12 @@
     justify-content:space-around;
 }
 .form{
-    width: 40%;
+    width: 20%;
 }
 .table-div{
-    width: 50%;
+    width: 40%;
+}
+
+table tr{
+    cursor:pointer;
 }
