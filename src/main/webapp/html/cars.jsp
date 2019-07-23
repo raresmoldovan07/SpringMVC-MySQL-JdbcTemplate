@@ -22,6 +22,10 @@
     <div class="form">
         <form>
             <div class="form-group">
+                <label for="car_id">Id</label>
+                <input type="text" class="form-control" id="car_id" placeholder="ID" readonly>
+            </div>
+            <div class="form-group">
                 <label for="brand">Brand</label>
                 <input type="text" class="form-control" id="brand" placeholder="Enter brand">
             </div>
@@ -54,7 +58,7 @@
             <tbody>
             <c:forEach var="car" items="${list}">
                 <tr onclick="displayRow()">
-                    <th id="col-id">${car.id}</th>
+                    <th>${car.id}</th>
                     <td>${car.brand}</td>
                     <td>${car.model}</td>
                     <td>${car.year}</td>
