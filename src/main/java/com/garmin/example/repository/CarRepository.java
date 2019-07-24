@@ -16,5 +16,5 @@ public interface CarRepository {
 
     void deleteCar(int id);
 
-    Car findCarById(int id);
+    Car getCar(int id);
 }

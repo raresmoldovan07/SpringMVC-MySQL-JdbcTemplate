@@ -45,6 +45,6 @@ public class MainController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Car getCar(@PathVariable("id") int id) {
-        return carService.findCarById(id);
+        return carService.getCar(id);
     }
 }

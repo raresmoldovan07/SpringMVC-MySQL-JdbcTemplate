@@ -66,7 +66,7 @@ public class CarRepositoryImpl implements CarRepository {
         namedParameterJdbcTemplate.update(deleteCarQuery, getSqlParameterByModel(new Car(id)));
     }
 
-    public Car findCarById(int id) {
+    public Car getCar(int id) {
         return namedParameterJdbcTemplate.queryForObject(findCarQuery, getSqlParameterByModel(new Car(id)), new CarMapper());
     }
 }
