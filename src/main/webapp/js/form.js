@@ -17,14 +17,39 @@ function addButton() {
     });
 }
 
-function deleteButton(){
+function deleteButton() {
+
+    const id = document.getElementById("car_id").value;
+    const url = "http://localhost:8080/cars/" + id;
+
+    fetch(url, {
+        method: "DELETE",
+    }).then(response => {
+        console.log(response);
+    });
 }
 
-function updateButton(){
+function updateButton() {
 
+    const brand = document.getElementById("brand").value;
+    const model = document.getElementById("model").value;
+    const year = document.getElementById("year").value;
+    const id = document.getElementById("car_id").value;
+    const url = "http://localhost:8080/cars";
+
+    let newCar = {"id": id, "brand": brand, "model": model, "year": year};
+    fetch(url, {
+        method: "PUT",
+        body: JSON.stringify(newCar),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        console.log(response);
+    });
 }
 
-function displayRow(){
+function displayRow() {
     let table = document.getElementById("table");
     for (let i = 1; i < table.rows.length; i++) {
         table.rows[i].onclick = function () {
