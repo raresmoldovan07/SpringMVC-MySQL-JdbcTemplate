@@ -2,7 +2,7 @@
 
 CRUD basic examples with Spring MVC + MySQL + Jdbc Template
 
-<img src="image.png" height=350>
+<img src="image.png">
 
 ## Tools
 * Build Tool: Maven
