@@ -17,4 +17,4 @@ CRUD basic examples with Spring MVC + MySQL + Jdbc Template
 * CRUD operations for managment of cars
 * Spring MVC Annotation-based configuration
 * Unit Tests with Mockito
-* Data acces with JDBC
+* Data access with JDBC
