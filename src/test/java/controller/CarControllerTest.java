@@ -1,6 +1,6 @@
 package controller;
 
-import com.garmin.example.controller.MainController;
+import com.garmin.example.controller.CarController;
 import com.garmin.example.model.Car;
 import com.garmin.example.service.CarServiceImpl;
 import org.junit.Test;
@@ -13,13 +13,13 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MainControllerTest {
+public class CarControllerTest {
 
     @Mock
     private CarServiceImpl carService;
 
     @InjectMocks
-    private MainController mainController;
+    private CarController mainController;
 
     @Test
     public void addCarTest() {
